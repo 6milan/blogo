@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <p>Search Query: <strong>{{ query }}</strong></p>
+    
+    <ul>
+        {% for result in results %}
+            <li>
+                {% if result.type == 'Post' %}
+                    <h3>
+                        <a href="{% url 'blog:post_detail' result.instance.publish.year result.instance.publish.month result.instance.publish.day result.instance.slug %}">{{ result.instance.title }}</a>
+                    </h3>
+                    <!-- Displaying the content without highlighting -->
+                    {% with result.instance.content|slice:":255" as excerpt %}
+                        {{ excerpt|safe }}
+                    {% endwith %}
+                    {% if result.instance.content|length > 255 %}
+                       <a href="{% url 'blog:post_detail' result.instance.publish.year result.instance.publish.month result.instance.publish.day result.instance.slug %}">Read more</a>
+                    {% endif %}
+                {% elif result.type == 'Category' %}
+                    <h3>
+                        <a href="{% url 'blog:category_detail' result.instance.id %}">{{ result.instance.name }}</a>
+                    </h3>
+                    <!-- Display more Category details if needed -->
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No results found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

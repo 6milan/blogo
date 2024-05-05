@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+<div id="reaction-options" style="display: none;">
+    <!-- Add your suggestion icons or emojis for each reaction type -->
+    <button onclick="reactComment( 'like')">👍 Like</button>
+    <button onclick="reactComment( 'love')">❤️ Love</button>
+    <button onclick="reactComment( 'care')">🤍 Care</button>
+    <button onclick="reactComment( 'angry')">😡 Angry</button>
+    <button onclick="reactComment( 'wow')">😮 Wow</button>
+    <button onclick="reactComment( 'sad')">😢 Sad</button>
+    <button onclick="reactComment( 'laugh')">😄 Laugh</button>
+</div>
+<button onclick="toggleReactionOptions()">Like</button>

@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Sidebar -->
+                <ul>
+                    {% for cat in categories %}
+                        <li><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% include 'blog/sidebar/sidebar.html' %}
+            </div>
+            <div class="col-md-9">
+                <h1>Welcome to Riitycoon Media Blog</h1>
+                <!-- Display the post_list -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="post-list">
+                            {% for post in posts %}
+                                <div class="post">
+                                    <h2>{{ post.title }}</h2>
+                                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                                    <p>{{ post.content|slice:":100" }}...</p>
+                                    <!-- Link to redirect to the category post detail page for each post -->
+                                    <a href="{% url 'blog:category_post_detail' category_name=post.category.name year=post.publish.year month=post.publish.month day=post.publish.day slug=post.slug %}" class="btn btn-secondary">Read more</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

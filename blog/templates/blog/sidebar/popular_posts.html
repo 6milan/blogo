@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h2>Popular Posts</h2>
+                <ul>
+                    {% for post in popular_posts %}
+                        <li>
+                            <a href="{% url 'blog:category_post_detail' category_name=post.category_name year=post.publish.year month=post.publish.month day=post.publish.day slug=post.slug %}">
+                                {{ post.title }}
+                            </a>
+                            <!-- Display other relevant information about popular posts -->
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

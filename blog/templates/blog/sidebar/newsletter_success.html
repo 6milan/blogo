@@ -1,0 +1,29 @@
+{% load static %}
+
+{% block content %}
+    <style>
+        body {
+        background-color: #ccc; /* Set a light gray background color for the body */
+        color:red;
+        font-family: Arial, sans-serif; /* Set the font family */
+    }
+
+        h1 {
+            background-color:#ccc;
+            color: white; color:black;
+            padding: 20px; /* Add padding for better appearance */
+        }
+
+        p {
+            background-color:white;
+            padding: 10px; /* Add padding for better appearance */
+        }
+    </style>
+
+    <h1>Thank You for Subscribing!</h1>
+    <p>You've successfully subscribed to our newsletter. We'll keep you updated with the latest news and updates.</p>
+    <!-- Add any additional content or instructions as needed -->
+{% endblock %}
+
+<!-- Back to Home link -->
+<a href="{% url 'blog:home' %}">Back to Home</a>

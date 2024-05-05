@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Riitycoon Media Blog</title>
+    <link>{{ request.build_absolute_uri }}</link>
+    <description>The latest posts from Riitycoon Media Blog.</description>
+
+    {% for post in object_list %}
+    <item>
+      <title>{{ post.title|escape }}</title>
+      <link>{{ request.build_absolute_uri }}{% url 'post_detail' post.slug %}</link>
+      <description>{{ post.content|escape }}</description>
+      <pubDate>{{ post.publish|date:"D, d M Y H:i:s O" }}</pubDate>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

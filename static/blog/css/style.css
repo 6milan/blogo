@@ -1,0 +1,506 @@
+/* Navbar styling */
+.navbar {
+    background-color: rgba(248, 249, 241, 0.838); /* Background color for the navbar */
+}
+
+/* Make the navbar horizontal */
+.navbar-expand-lg .navbar-nav {
+    display: flex; /* Use flexbox to make the navbar horizontal */
+    flex-direction: row; /* Horizontal layout for navbar items */
+    justify-content: flex-end; /* Adjust the alignment if needed */
+}
+
+/* CSS styles for post details */
+.post-detail {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.post-detail img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.add-comment {
+margin-top: 4rem; /* You can adjust the margin-top according to your preference */
+}
+
+.add-comment h2 {
+font-size: 1.5rem; /* Adjust the font size of the heading */
+color: #333; /* Adjust the color of the heading */
+}
+
+.comment-submit-btn {
+background-color: #007bff !important; /* Blue background color */
+color: #fff !important; /* White text color */
+padding: 10px 20px; /* Adjust padding as needed */
+border: none; /* No border */
+border-radius: 5px; /* Rounded corners */
+cursor: pointer; /* Show pointer cursor on hover */
+font-size: 16px; /* Font size */
+transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.comment-submit-btn:hover {
+background-color: #0056b3 !important; /* Darker blue on hover */
+}
+
+
+
+/* Styles for the "Other posts" block */
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.other-post {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start; /* Align items at the start vertically */
+    margin-bottom: 20px; /* Adjust margin between rows as needed */
+    width: 30%; /* Set the width for each post */
+    box-sizing: border-box; /* Include padding and border in width */
+    padding: 10px; /* Add padding for post container */
+}
+
+.other-post img {
+    max-width: 100%; /* Set the maximum width for the post images (adjust as needed) */
+    height: auto; /* Maintain the aspect ratio of the image */
+    display: block; /* Remove any extra spacing below the image */
+    margin-bottom: 10px; /* Add margin below the image */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+
+.other-post p {
+    margin: 5px 0;
+    font-size: 14px; /* Adjust font size as needed */
+    color: #333; /* Text color */
+}
+
+.other-post a {
+    text-decoration: none;
+    color: #007bff; /* Link color */
+}
+
+.other-post a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Styles for the "No post details available" message */
+p.no-details {
+    font-size: 18px;
+    color: #777;
+}
+
+.comment-submit-btn {
+    cursor: pointer; /* Set cursor to pointer on hover */
+}
+
+.reactions-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.reaction-btn {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.reaction-btn.like .reaction-count::before { content: 'Like '; }
+.reaction-btn.love .reaction-count::before { content: 'Love '; }
+.reaction-btn.care .reaction-count::before { content: 'Care '; }
+.reaction-btn.angry .reaction-count::before { content: 'Angry '; }
+.reaction-btn.wow .reaction-count::before { content: 'Wow '; }
+.reaction-btn.sad .reaction-count::before { content: 'Sad '; }
+.reaction-btn.laugh .reaction-count::before { content: 'Laugh '; }
+
+.reaction-btn .reaction-count {
+    margin-left: 5px;
+}
+
+
+/* Media File */
+.media-file {
+width: 100%;
+height: auto;
+margin-bottom: 15px;
+}
+
+/* Download Button */
+.download-btn {
+display: inline-block;
+margin-right: 10px;
+background-color: #007bff;
+color: #fff;
+padding: 5px 10px;
+text-decoration: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+/* Reactions Container */
+.reactions-container {
+display: flex;
+flex-wrap: wrap; /* Allow buttons to wrap if needed */
+}
+
+/* Reaction Button */
+.reactions-container .reaction-btn {
+position: relative;
+margin-right: 10px;
+}
+
+/* Reactions Emoji */
+.reactions-container .reaction-btn .emoji {
+display: none;
+}
+
+
+/* Reaction Button Link */
+.reactions-container .reaction-btn a {
+text-decoration: none; /* Remove underline from links */
+color: inherit; /* Inherit text color from parent */
+display: flex; /* Align emoji and count vertically */
+align-items: center; /* Align emoji and count vertically */
+}
+
+/* Reaction Emoji */
+.reactions-container .reaction-btn a .emoji {
+margin-right: 5px; /* Add spacing between emoji and count */
+}
+
+/* Reaction Count */
+.reactions-container .reaction-btn a .reaction-count {
+margin-left: 2px; /* Add spacing between emoji and count */
+}
+
+/* Reply Button */
+.reply-btn {
+background-color: #007bff; /* Blue background color */
+color: #fff; /* White text color */
+padding: 8px 16px; /* Adjust padding as needed */
+border: none; /* No border */
+border-radius: 5px; /* Rounded corners */
+cursor: pointer; /* Show pointer cursor on hover */
+font-size: 14px; /* Font size */
+transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.reply-btn:hover {
+background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Increase font size and adjust spacing for navbar links */
+.navbar-nav .nav-item .nav-link {
+    color: #fa0b0b; /* Text color for navbar links */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+    font-size: 22px; /* Adjust the font size as needed */
+    margin-right: 50px; /* Add spacing between navbar links */
+    margin: 30px;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #333; /* Background color on hover */
+    color: #fff; /* Text color on hover */
+}
+
+
+/* Body styling */
+body {
+    background-color: #ccc; /* Background color for the body */
+    font-family: Arial, sans-serif; /* Specify your preferred font-family */
+    min-height: 400vh;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+
+    text-align:center;
+
+}
+
+/* Reduce size of post title and image */
+.post h2 {
+    font-size: 16px; /* Adjust the font size as needed */
+    width: 250px; /* Adjust the width of the title container */
+}
+
+.post img {
+    max-width: 100%; /* Adjust the image size as needed */
+    height: auto;
+}
+
+/* Arrange posts side by side in threes centered */
+.post-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start; /* Align items at the start vertically */
+    margin-bottom: 20px; /* Adjust margin between rows as needed */
+}
+
+.post {
+    width: 30%; /* Set the width for each post */
+    margin-bottom: 20px; /* Adjust margin between posts as needed */
+    box-sizing: border-box; /* Include padding and border in width */
+    padding: 10px; /* Add padding for post container */
+}
+
+/* Style the post image */
+.post img {
+    max-width: 50%; /* Set the maximum width for the post images (adjust as needed) */
+    height: 50%; /* Maintain the aspect ratio of the image */
+    display: block; /* Remove any extra spacing below the image */
+    margin-right: 50px;
+}
+
+.post-detail img {
+    max-width: 50%; /* Set the maximum width for the post images (adjust as needed) */
+    height: 50%; /* Maintain the aspect ratio of the image */
+    display: block; /* Remove any extra spacing below the image */
+    margin-left: 100px;
+}
+
+/* Style for sidebar-down */
+.sidebar-up {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    width: 18%;
+    position: absolute;
+    top: 130px;
+    right: 0;
+}
+
+/* Style for sidebar-up */
+.sidebar-down {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 50px;
+    width: 18%;
+    position: absolute;
+    top: 500px;
+    right: 0;
+}
+
+
+/* Apply styles to the whole sidebar table */
+table.sidebar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Apply styles to the cells in the table */
+table.sidebar td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+/* Style the sidebar-up (left) cell */
+table.sidebar .sidebar-up {
+    background-color: #ebebeb;
+}
+
+/* Style the sidebar-down (right) cell */
+table.sidebar .sidebar-down {
+    background-color: #ebebeb;
+}
+
+/* Apply styles to the headings (h2) within the cells */
+table.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Apply styles to the lists (ul) within the cells */
+table.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Apply styles to list items (li) within the lists */
+table.sidebar li {
+    margin: 5px 0;
+}
+
+/* Style the links inside the sidebar to be red */
+.sidebar-up a, .sidebar-down a {
+    color: red;
+}
+
+.logo {
+    width: 100px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+}
+
+
+/* Style the search form input and button */
+table.sidebar .search-form input[type="text"] {
+    width: 50%;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+table.sidebar .search-form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+table.sidebar .search-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the advertisements */
+table.sidebar .advertisements {
+    text-align: center;
+}
+
+table.sidebar .advertisements img {
+    max-width: 100%;
+}
+
+/* Style the category links */
+.category-link {
+    text-decoration: none;
+    color: #333; /* Change the color to your preference */
+    font-size: 16px; /* Adjust the font size as needed */
+    padding: 5px 0;
+    display: block; /* Make the links full width */
+}
+
+/* Hover effect for category links */
+.category-link:hover {
+    color: #007bff; /* Change the hover color to your preference */
+}
+  
+/* Media query for smaller screens (e.g., mobile phones and iPads) */
+@media (max-width: 460px) {
+    /* Adjust the styles for smaller screens here */
+
+    /* Navbar links */
+    .navbar-nav .nav-item .nav-link {
+        font-size: 12.5px; /* Reduce the font size for smaller screens */
+        margin-right: 4px; /* Reduce spacing between navbar links */
+        margin: 3px;
+    }
+
+    body {
+        min-height: 300vh; /* Increase the minimum height of the body */
+        font-size: 12.5px;
+    }
+
+    /* Sidebar */
+    .col-md-3 .sidebar {
+        padding: 5px;
+        font-size: 12.5px;
+    }
+
+    .col-md-3 .sidebar .search-form input[type="text"] {
+        padding: 3px;
+    }
+
+    .col-md-3 .sidebar .search-form button {
+        padding: 3px 6px;
+    }
+
+    .col-md-3 .sidebar .popular-posts li,
+    .col-md-3 .sidebar .recent-posts li,
+    .col-md-3 .sidebar .custom-links li,
+    .col-md-3 .sidebar .advertisements li {
+        margin-bottom: 3px;
+    }
+
+    /* H1 */
+    h1 {
+        font-size: 24px; /* Reduce the font size for smaller screens */
+        text-align: left; /* Adjust text alignment for smaller screens */
+    }
+
+    .post h2 {
+        max-width: 50%;
+    }
+
+    .post p {
+        max-width: 50%; /* Adjust the max-width for paragraphs */
+        margin-right: 0; /* Remove margin-right for paragraphs */
+    }
+
+    .post img {
+        max-width: 50%; /* Adjust the max-width for post images */
+        height: auto; /* Reset the height to maintain aspect ratio */
+        margin-right: 0; /* Remove margin-right for images */
+    }
+
+    .post-detail {
+        max-width: 100%; /* Adjust the max-width for post details */
+        margin-right: 0; /* Remove margin-right for post details */
+    }
+
+    .post-detail img {
+        max-width: 100%; /* Adjust the max-width for post detail images */
+        height: auto; /* Reset the height to maintain aspect ratio */
+        margin-left: 0; /* Remove margin-left for images */
+    }
+
+    .post {
+        width: 48%; /* Display each post in full width on smaller screens */
+    }
+
+}
+
+.other-post {
+    flex-direction: column; /* Display other posts vertically */
+}
+
+.other-post img {
+    margin-bottom: 10px; /* Adjust margin between image and title */
+}
+
+.other-post p {
+    margin: 0; /* Remove default margin for paragraphs */
+}
+
+.other-post a {
+    display: flex; /* Use flexbox to display p and title horizontally */
+    align-items: center; /* Align items vertically in the flex container */
+}
+
+.other-post a img {
+    margin-right: 10px; /* Adjust margin between image and title */
+}
+
+.other-post a p {
+    margin-left: 10px; /* Adjust margin between image and title */
+}

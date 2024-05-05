@@ -1,0 +1,53 @@
+{% load static %}
+
+<style>
+    body {
+        background-color: #ccc; /* Set a light gray background color for the body */
+        color: red;
+        font-family: Arial, sans-serif; /* Set the font family */
+    }
+
+    h2 {
+        background-color: #fff; /* Dark blue background for h2 */
+        color:red;
+        padding: 10px; /* Add padding for better appearance */
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        background-color: #fff; /* White background for li */
+        margin-bottom: 10px;
+        border-radius: 5px; /* Add border radius for rounded corners */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+        padding: 10px; /* Add padding for better appearance */
+    }
+
+    strong {
+        color: #336699; /* Dark blue text color for strong elements */
+    }
+</style>
+
+<h2>Upcoming Events</h2>
+
+{% if upcoming_events %}
+    <ul>
+        {% for event in upcoming_events %}
+            <li>
+                <strong>{{ event.title }}</strong> - {{ event.date|date:"Y-m-d" }}<br>
+                Time: {{ event.time }}<br>
+                Location: {{ event.location }}<br>
+                Description: {{ event.description }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No upcoming events found.</p>
+{% endif %}
+
+<!-- Back to Home link -->
+<a href="{% url 'blog:home' %}">Back to Home</a>

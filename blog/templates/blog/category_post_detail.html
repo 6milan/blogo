@@ -1,0 +1,282 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    {% if post %}
+        <article class="post-detail">
+            <h2>{{ post.title }}</h2>
+            <p>Published on {{ post.publish|date:"F j, Y" }}, {{ post.publish|time:"g:i A" }} by {{ post.author }}</p>
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            <p>{{ post.content }}</p>
+
+            <!-- Display multiple media files -->
+            {% for media in post.media.all %}
+                {% if media.media_type == 'image' %}
+                    <img class="media-file" src="{{ media.url }}" alt="{{ post.title }} - Image">
+                {% elif media.media_type == 'video' %}
+                    <video class="media-file" controls>
+                        <source src="{{ media.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% elif media.media_type == 'audio' %}
+                    <audio class="media-file" controls>
+                        <source src="{{ media.url }}" type="audio/mp3">
+                        Your browser does not support the audio tag.
+                    </audio>
+                {% else %}
+                    <!-- Handle other media types -->
+                {% endif %}
+                <a class="download-btn" href="{{ media.url }}" download>Download</a>
+            {% endfor %}
+
+    <!-- Post Reactions -->
+    <div class="reactions-container">
+        <button class="reaction-btn like">
+            <a href="{% url 'blog:react_to_post' post.id 'like' %}">
+                &#x1F44D;
+                <span class="reaction-count">{{ post.likes }}</span>
+            </a>
+        </button>
+        
+        <button class="reaction-btn love">
+            <a href="{% url 'blog:react_to_post' post.id 'love' %}">
+                &#x2764;&#xFE0F;
+                <span class="reaction-count">{{ post.loves }}</span>
+            </a>
+        </button>
+        
+        <button class="reaction-btn care">
+            <a href="{% url 'blog:react_to_post' post.id 'care' %}">
+                &#x1F495;
+                <span class="reaction-count">{{ post.cares }}</span>
+            </a>
+        </button>
+        
+        <button class="reaction-btn angry">
+            <a href="{% url 'blog:react_to_post' post.id 'angry' %}">
+                &#x1F621;
+                <span class="reaction-count">{{ post.angrys }}</span>
+            </a>
+        </button>
+        
+        <button class="reaction-btn wow">
+            <a href="{% url 'blog:react_to_post' post.id 'wow' %}">
+                &#x1F60D;
+                <span class="reaction-count">{{ post.wows }}</span>
+            </a>
+        </button>
+        
+        <button class="reaction-btn sad">
+            <a href="{% url 'blog:react_to_post' post.id 'sad' %}">
+                &#x1F622;
+                <span class="reaction-count">{{ post.sads }}</span>
+            </a>
+        </button>
+        
+        <button class="reaction-btn laugh">
+            <a href="{% url 'blog:react_to_post' post.id 'laugh' %}">
+                &#x1F604;
+                <span class="reaction-count">{{ post.laughs }}</span>
+            </a>
+        </button>
+        <!-- Include other post reaction buttons -->
+    </div>
+
+    <div class="comment-section mt-4">
+        <h2>Comments</h2>
+        <div class="comments">
+            {% for comment in comments %}
+                <div class="comment">
+                    <p class="comment-meta">
+                        <strong>{{ comment.name }}</strong> said
+                        <span class="comment-time">{{ comment.created_on|timesince }} ago</span>
+                    </p>
+                    <p class="comment-body">{{ comment.body }}</p>
+                    
+                    <!-- Comment Reactions -->
+                    <div class="reactions-container">
+                        <button class="reaction-btn like">
+                            <a href="{% url 'blog:react_to_comment' comment.id 'like' %}">
+                                &#x1F44D;
+                                <span class="reaction-count">{{ comment.likes }}</span>
+                            </a>
+                        </button>
+                        
+                        <button class="reaction-btn love">
+                            <a href="{% url 'blog:react_to_comment' comment.id 'love' %}">
+                                &#x2764;&#xFE0F;
+                                <span class="reaction-count">{{ comment.loves }}</span>
+                            </a>
+                        </button>
+                        
+                        <button class="reaction-btn care">
+                            <a href="{% url 'blog:react_to_comment' comment.id 'care' %}">
+                                &#x1F495;
+                                <span class="reaction-count">{{ comment.cares }}</span>
+                            </a>
+                        </button>
+                        
+                        <button class="reaction-btn angry">
+                            <a href="{% url 'blog:react_to_comment' comment.id 'angry' %}">
+                                &#x1F621;
+                                <span class="reaction-count">{{ comment.angrys }}</span>
+                            </a>
+                        </button>
+                        
+                        <button class="reaction-btn wow">
+                            <a href="{% url 'blog:react_to_comment' comment.id 'wow' %}">
+                                &#x1F60D;
+                                <span class="reaction-count">{{ comment.wows }}</span>
+                            </a>
+                        </button>
+                        
+                        <button class="reaction-btn sad">
+                            <a href="{% url 'blog:react_to_comment' comment.id 'sad' %}">
+                                &#x1F622;
+                                <span class="reaction-count">{{ comment.sads }}</span>
+                            </a>
+                        </button>
+                        
+                        <button class="reaction-btn laugh">
+                            <a href="{% url 'blog:react_to_comment' comment.id 'laugh' %}">
+                                &#x1F604;
+                                <span class="reaction-count">{{ comment.laughs }}</span>
+                            </a>
+                        </button>
+                        <!-- Include other comment reaction buttons -->
+                    </div>
+                    
+                    <!-- Reply Button -->
+                    <button class="reply-btn" onclick="toggleReplyForm('{{ comment.id }}')">Reply</button>
+
+                    <!-- Add Comment Form -->
+<div class="add-comment mt-4">
+    <h2>Add Comment</h2>
+    <form method="post" action="{% url 'blog:submit_comment' post.id %}">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit" class="btn btn-primary comment-submit-btn">Submit</button>
+    </form>
+</div>
+                    
+                    <!-- Reply Section -->
+                    <div class="reply-section" id="reply-section-{{ comment.id }}" style="display: none;">
+                        <h3>Replies</h3>
+                        <div class="replies">
+                            <!-- Display replies -->
+                            {% for reply in comment.replies.all %}
+                                <div class="reply">
+                                    <p class="reply-meta">
+                                        <strong>{{ reply.name }}</strong> replied
+                                        <span class="reply-time">{{ reply.created_on|timesince }} ago</span>
+                                    </p>
+                                    <p class="reply-body">{{ reply.body }}</p>
+                                    
+                                    <!-- Reply Reactions -->
+                                    <div class="reactions-container">
+                                        <button class="reaction-btn like">
+                                            <a href="{% url 'blog:react_to_reply' reply.id 'like' %}">
+                                                &#x1F44D;
+                                                <span class="reaction-count">{{ reply.likes }}</span>
+                                            </a>
+                                        </button>
+                                        <!-- Reply Reactions -->
+                        <div class="reactions-container">
+                            <button class="reaction-btn like">
+                                <a href="{% url 'blog:react_to_reply' reply.id 'like' %}">
+                                    &#x1F44D;
+                                    <span class="reaction-count">{{ reply.likes }}</span>
+                                </a>
+                            </button>
+                            
+                            <button class="reaction-btn love">
+                                <a href="{% url 'blog:react_to_reply' reply.id 'love' %}">
+                                    &#x2764;&#xFE0F;
+                                    <span class="reaction-count">{{ reply.loves }}</span>
+                                </a>
+                            </button>
+                            
+                            <button class="reaction-btn care">
+                                <a href="{% url 'blog:react_to_reply' reply.id 'care' %}">
+                                    &#x1F495;
+                                    <span class="reaction-count">{{ reply.cares }}</span>
+                                </a>
+                            </button>
+                            
+                            <button class="reaction-btn angry">
+                                <a href="{% url 'blog:react_to_reply' reply.id 'angry' %}">
+                                    &#x1F621;
+                                    <span class="reaction-count">{{ reply.angrys }}</span>
+                                </a>
+                            </button>
+                            
+                            <button class="reaction-btn wow">
+                                <a href="{% url 'blog:react_to_reply' reply.id 'wow' %}">
+                                    &#x1F60D;
+                                    <span class="reaction-count">{{ reply.wows }}</span>
+                                </a>
+                            </button>
+                            
+                            <button class="reaction-btn sad">
+                                <a href="{% url 'blog:react_to_reply' reply.id 'sad' %}">
+                                    &#x1F622;
+                                    <span class="reaction-count">{{ reply.sads }}</span>
+                                </a>
+                            </button>
+                            
+                            <button class="reaction-btn laugh">
+                                <a href="{% url 'blog:react_to_reply' reply.id 'laugh' %}">
+                                    &#x1F604;
+                                    <span class="reaction-count">{{ reply.laughs }}</span>
+                                </a>
+                            </button>
+                                        
+                                        <!-- Add more reaction buttons as needed -->
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <p>No replies yet.</p>
+                            {% endfor %}
+                        </div>
+                        
+                        <!-- Reply Form -->
+                        <div class="add-reply mt-4">
+                            <h2>Add Reply</h2>
+                            <form method="post" action="{% url 'blog:submit_reply' comment.id %}">
+                                {% csrf_token %}
+                                {{ comment_form.as_p }}
+                                <button type="submit" class="btn btn-primary comment-submit-btn">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% else %}
+    <p>No post details available.</p>
+{% endif %}
+
+{% if other_posts %}
+<h2>Other posts in {{ category.name }}</h2>
+{% for other_post in other_posts %}
+    <div class="other-post">
+        <img src="{{ other_post.image.url }}" alt="{{ other_post.title }}">
+        <p><strong>Title:</strong> <a href="{% url 'blog:category_post_detail' category_name=category.name year=other_post.publish.year month=other_post.publish.month day=other_post.publish.day slug=other_post.slug %}">{{ other_post.title }}</a></p>
+        <p><strong>Date:</strong> {{ other_post.publish|date:"F j, Y" }}, </p>
+        <p><strong>Time:</strong> {{ other_post.publish|time:"g:i A" }}</p><br>
+    </div>
+{% endfor %}
+{% else %}
+<p>No other posts available in this category.</p>
+{% endif %}
+</div>
+{% endblock %}
+
+
+
+
+
+           

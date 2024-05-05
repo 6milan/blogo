@@ -1,0 +1,40 @@
+{% load static %}
+
+<style>
+    body {
+        background-color: #ccc;
+        color: red; /* Set the default text color */
+        font-family: Arial, sans-serif; /* Set the font family */
+    }
+
+    form {
+        background-color: #fff; /* White background for the form */
+        padding: 20px; /* Add padding for better appearance */
+        border-radius: 5px; /* Add border radius for rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+        margin: 20px auto; /* Center the form horizontally */
+        max-width: 400px; /* Limit the form width */
+    }
+
+    button {
+        background-color: #336699; /* Dark blue button color */
+        color: white; /* White text color for the button */
+        padding: 10px 20px; /* Add padding for better appearance */
+        border: none; /* Remove button border */
+        border-radius: 3px; /* Add border radius for rounded corners */
+        cursor: pointer; /* Change cursor on hover */
+    }
+
+    button:hover {
+        background-color: #004466; /* Darker blue color on button hover */
+    }
+</style>
+
+<form method="post" style="text-align: center;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Subscribe</button>
+</form>
+
+<!-- Back to Home link -->
+<a href="{% url 'blog:home' %}">Back to Home</a>

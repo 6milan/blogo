@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.content }}</p>
+
+  <!-- Display comments -->
+  <h3>Comments</h3>
+  {% if comments %}
+    <ul>
+      {% for comment in comments %}
+        <li>{{ comment.author }} said:</li>
+        <li>{{ comment.body }}</li>
+        <br>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No comments yet.</p>
+  {% endif %}
+
+  <!-- Add Comment Form -->
+  <h3>Add a comment</h3>
+  <form method="post" action="{% url 'submit_comment' post.id %}">
+    {% csrf_token %}
+    <label for="author">Your name:</label><br>
+    <input type="text" id="author" name="author" autocomplete="name"><br> <!-- Add autocomplete attribute -->
+    <label for="body">Your comment:</label><br>
+    <textarea id="body" name="body" autocomplete="comment"></textarea><br> <!-- Add autocomplete attribute -->
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ about_content.title }}</h1>
+        <p>{{ about_content.description }}</p>
+
+        <h2>Our Services</h2>
+        <ul>
+            <li>
+                <h3>News Services</h3>
+                <p>{{ about_content.services.news_services }}</p>
+            </li>
+            <li>
+                <h3>Web Development & Programming</h3>
+                <p>{{ about_content.services.web_dev_and_prog }}</p>
+            </li>
+        </ul>
+
+        <h2>Our Mission</h2>
+        <p>{{ about_content.mission }}</p>
+
+        <h2>Reasons to Choose Riitycoon</h2>
+        <ul>
+            <li>
+                <h3>Reliable Reporting</h3>
+                <p>{{ about_content.reasons_to_choose.reliable_reporting }}</p>
+            </li>
+            <li>
+                <h3>Innovation and Expertise</h3>
+                <p>{{ about_content.reasons_to_choose.innovation_expertise }}</p>
+            </li>
+            <li>
+                <h3>Dedication to Excellence</h3>
+                <p>{{ about_content.reasons_to_choose.dedication_to_excellence }}</p>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

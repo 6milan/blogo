@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load static%}
+
+{% block content %}
+    <div class="container">
+        <h2>Post Archive</h2>
+        {% for post in posts %}
+            <h3>{{ post.year|date:"Y" }}</h3>
+            <ul>
+                {% for year_post in post.post_count %}
+                    <li>
+                        <a href="{% url 'blog:post_detail' year=year_post.publish.year month=year_post.publish.month day=year_post.publish.day slug=year_post.slug %}">
+                            {{ year_post.title }}
+                        </a>
+                        <!-- Display other relevant information about posts -->
+                    </li>
+                {% endfor %}
+            </ul>
+        {% empty %}
+            <p>No posts available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+

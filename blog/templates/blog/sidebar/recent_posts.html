@@ -1,0 +1,64 @@
+<!-- blog/sidebar/recent_posts.html -->
+
+{% block sidebar %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <style>
+                    h2 {
+                        color: black;
+                    }
+
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                    }
+
+                    li {
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid #ccc;
+                        padding-bottom: 20px;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: blue;
+                    }
+
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+
+                    p {
+                        margin-top: 10px;
+                        font-size: 14px;
+                    }
+
+                    body {
+                        background-color: #ccc;
+                    }
+                         
+                </style>
+
+                <h2>Recent Posts</h2>
+                <ul>
+                    <!-- Add a "Back to Home" link at the top -->
+                    <li>
+                        <a href="{% url 'blog:home' %}">Back to Home</a>
+                    </li>
+
+                    {% for post in recent_posts %}
+                        <li>
+                            <a href="{% url 'blog:category_post_detail' category_name=post.category.name year=post.publish.year month=post.publish.month day=post.publish.day slug=post.slug %}">
+                                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                                <p>{{ post.content|slice:":100" }}...</p>
+                            </a>
+                            <!-- Display other relevant information about recent posts -->
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

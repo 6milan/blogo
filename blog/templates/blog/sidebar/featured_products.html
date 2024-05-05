@@ -1,0 +1,48 @@
+{% load static %}
+
+<style>
+    body {
+        background-color: #ccc; /* Set a light gray background color for the body */
+        color:#fa0b0b;
+        font-family: Arial, sans-serif; /* Set the font family */
+    }
+
+    h2 {
+        background-color: white;
+        color:#fa0b0b;
+        padding: 10px; /* Add padding for better appearance */
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        background-color: #fff; /* White background for li */
+        margin-bottom: 10px;
+        border-radius: 5px; /* Add border radius for rounded corners */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+        padding: 10px; /* Add padding for better appearance */
+    }
+</style>
+
+<h2>Featured Products</h2>
+
+<ul>
+    {% for product in featured_products %}
+        <li>
+            {{ product.name }} - ${{ product.price }}
+            {% if product.purchase_link %}
+                <a href="{{ product.purchase_link }}" target="_blank">Purchase</a>
+            {% else %}
+                <!-- Handle cases where the purchase link is not available -->
+                (Purchase link not available)
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- Back to Home link -->
+<a href="{% url 'blog:home' %}">Back to Home</a>

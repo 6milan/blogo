@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.content }}</p>
+
+  <!-- Display comments -->
+  <h3>Comments</h3>
+  {% if comments %}
+    <ul>
+      {% for comment in comments %}
+        <li>{{ comment.author }} said:</li>
+        <li>{{ comment.body }}</li>
+        <br>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No comments yet.</p>
+  {% endif %}
+
+  <!-- Add Reply Form -->
+  <h3>Reply</h3>
+  <form method="post" action="/submit_reply">
+    <input type="text" name="username" autocomplete="username">
+    <input type="password" name="password" autocomplete="current-password">
+    <!-- Other form fields -->
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+<!-- contact_us.html -->
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Contact Us</h2>
+    <p>
+        <strong>Business Email:</strong> {{ contact_info.email }}<br>
+        <strong>WhatsApp:</strong> {{ contact_info.whatsapp }}<br>
+        <strong>Location:</strong> {{ contact_info.location }}
+    </p>
+    <p>For any inquiries or further information, please feel free to reach out to us using the provided contact details.</p>
+{% endblock %}

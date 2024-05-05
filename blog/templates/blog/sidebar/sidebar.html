@@ -1,0 +1,130 @@
+{% load static %}
+
+<table class="sidebar">
+    <tr>
+        <td class="sidebar-up">
+            <div class="search-form">
+                <form action="{% url 'blog:search' %}" method="get">
+                    <input type="text" name="q" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <div class="popular-posts">
+                <h2><a href="{% url 'blog:popular_posts' %}">Popular Posts</a></h2>
+                <ul>
+                    {% for post in popular_posts %}
+                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="recent-posts">
+                <h2><a href="{% url 'blog:recent_posts' %}">Recent Posts</a></h2>
+                <ul>
+                    {% for post in recent_posts %}
+                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="archive">
+                <h2><a href="{% url 'blog:archive' year=2024 month=1 day=1 category_name='all' %}">Archive</a></h2>
+            </div>            
+            <div class="featured-products">
+                <h2><a href="{% url 'blog:featured_products' %}">Featured Products</a></h2>
+            </div>
+            <div class="about">
+                <h2><a href="{% url 'blog:about_us' %}">About Us</a></h2>
+            </div>
+            <div class="contact">
+                <h2><a href="{% url 'blog:contact_us' %}">Contact Us</a></h2>
+            </div>
+            <div class="subscribe-newsletter">
+                <h2><a href="{% url 'blog:subscribe_newsletter' %}">Subscribe to Newsletter</a></h2>
+                <!-- Include your newsletter signup form or details here -->
+            </div>
+            <div class="upcoming-events">
+                <h2><a href="{% url 'blog:upcoming_events' %}">Upcoming Events</a></h2>
+                <ul>
+                    {% for event in upcoming_events %}
+                        <li><a href="{{ event.get_absolute_url }}">{{ event.title }} - {{ event.date }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        <td class="sidebar-down">
+            <div class="advertisements">
+                <h2>Advertisements</h2>
+                <ul>
+                    {% for ad in advertisements %}
+                    <li><a href="{{ ad.url }}"><img src="{{ ad.image.url }}" alt="Advertisement"></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="custom-links">
+                <h2>Custom Links</h2>
+    <ul>
+        <!-- World News Outlets -->
+        <li>
+            <a href="https://www.bbc.com/news">
+                <img src="/static/blog/images/bbc-logo.png" alt="BBC Logo" class="logo">
+            </a>
+        </li>
+        <li>
+            <!-- CNN -->
+        <!-- CNN -->
+<li>
+    <a href="https://www.cnn.com/">
+        <img src="/static/blog/images/cnn-logo.png" alt="CNN Logo" class="logo">
+    </a>
+</li>
+
+<!-- The Guardian -->
+<li>
+    <a href="https://www.theguardian.com/">
+        <img src="/static/blog/images/guardian-logo.png" alt="The Guardian Logo" class="logo">
+    </a>
+</li>
+
+<!-- Al Jazeera -->
+<li>
+    <a href="https://www.aljazeera.com/">
+        <img src="/static/blog/images/aljazeera-logo.png" alt="Al Jazeera Logo" class="logo">
+    </a>
+</li>
+
+<!-- The Washington Post -->
+<li>
+    <a href="https://www.washingtonpost.com/">
+        <img src="/static/blog/images/washingtonpost-logo.png" alt="The Washington Post Logo" class="logo">
+    </a>
+</li>
+
+<!-- African News Outlets -->
+
+<!-- Africanews -->
+<li>
+    <a href="https://www.africanews.com/">
+        <img src="/static/blog/images/africanews-logo.png" alt="Africanews Logo" class="logo">
+    </a>
+</li>
+
+<!-- The Guardian Nigeria -->
+<li>
+    <a href="https://guardian.ng/">
+        <img src="/static/blog/images/guardian-nigeria-logo.png" alt="The Guardian Nigeria Logo" class="logo">
+    </a>
+</li>
+
+<!-- News24 (South Africa) -->
+<li>
+    <a href="https://www.news24.com/">
+        <img src="/static/blog/images/news24-south-africa-logo.png" alt="News24 South Africa Logo" class="logo">
+    </a>
+</li>
+
+</ul>
+</div>
+                    
+</td>
+    </tr>
+</table>
